@@ -1,5 +1,5 @@
 <template>
-  <div class="calculator mx-auto mt-10 max-w-xs border border-gray-300 rounded-lg shadow-lg p-5 bg-white">
+  <div class="calculator mx-auto mt-8 max-w-xs border border-gray-600 rounded-3xl shadow-lg p-5 bg-gray-900">
     <CalculatorDisplay :value="calculator.getCurrent()" />
     <CalculatorMenu @button-click="handleButtonClick" />
     <div v-if="errorMessage" class="error-message text-red-500 mt-2">{{ errorMessage }}</div>
@@ -28,20 +28,18 @@ export default defineComponent({
     handleButtonClick(button: string) {
       this.errorMessage = '';  // Clear any existing error message
       try {
-        if (button >= '0' && button <= '9') {
+        if(!isNaN(parseInt(button))){
           this.calculator.inputDigit(button);
-        } else if (button === 'C') {
+        }else if (button === 'C'){
           this.calculator.clear();
-        } else if (button === '=') {
-          this.calculator.calculate();
-        } else {
+        }else {
           this.calculator.inputOperator(button as Operation);
         }
-      } catch (error: unknown) {
-        if (error instanceof Error) {
+      } catch (error: any){
+        if (error instanceof Error){
           this.errorMessage = error.message;
-        } else {
-          this.errorMessage = 'Um erro desconhecido ocorreu.';
+        }else {
+          this.errorMessage = 'Um erro desconhecido ocorreu.'
         }
       }
     }
