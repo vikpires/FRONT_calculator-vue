@@ -28,10 +28,18 @@ export default defineComponent({
       ]
     };
   },
+  computed: {
+
+  },
+  
   methods: {
     onButtonClick(button: string) {
-      this.$emit('button-click', button);
+      if(button === 'C' || button === '='){
+        this.$emit('button-click', button);
+      }else{
+      this.$emit('button-click', button as Operation);
     }
+  }
   }
 });
 </script>
