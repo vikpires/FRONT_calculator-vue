@@ -1,5 +1,5 @@
 <template>
-  <div class="menu mb-4">
+  <div class="menu grid-cols-4 gap-2">
     <CalculatorButton 
       v-for="button in buttons" 
       :key="button" 
@@ -11,6 +11,7 @@
 <script lang="ts">
 import { defineComponent } from 'vue';
 import CalculatorButton from './CalculatorButton.vue';
+import { Operation } from '../models/calculator';
 
 export default defineComponent({
   name: 'CalculatorMenu',
@@ -20,10 +21,10 @@ export default defineComponent({
   data() {
     return {
       buttons: [
-        '7', '8', '9', '/',
-        '4', '5', '6', '*',
-        '1', '2', '3', '-',
-        '0', 'C', '=', '+'
+        '1', '2', '3', Operation.Divide,
+        '4', '5', '6', Operation.Multiply,
+        '7', '8', '9', Operation.Subtract, 
+        'C', '0', '=', Operation.Add,
       ]
     };
   },
@@ -34,3 +35,10 @@ export default defineComponent({
   }
 });
 </script>
+<!-- <style scoped>
+.menu {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+}
+</style> -->
