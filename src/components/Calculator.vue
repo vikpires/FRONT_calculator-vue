@@ -28,7 +28,7 @@ export default defineComponent({
     handleButtonClick(button: string) {
       this.errorMessage = '';  // Clear any existing error message
       try {
-        if(!isNaN(parseInt(button))){
+        if(/[0-9]/.test(button)){
           this.calculator.inputDigit(button);
         }else if (button === 'C'){
           this.calculator.clear();
