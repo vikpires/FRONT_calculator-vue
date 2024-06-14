@@ -1,57 +1,56 @@
 <template>
-  <div class="calculator mx-auto mt-8 max-w-xs border border-gray-600 rounded-3xl shadow-lg p-5 bg-gray-900">
-    <CalculatorDisplay :value="calculator.getCurrent()" />
-    <CalculatorMenu @button-click="handleButtonClick" />
-    <div v-if="errorMessage" class="error-message text-red-500 mt-2">{{ errorMessage }}</div>
+  <div class="Calculator my-6 rounded-xl p-6 bg-gray-900 w-max">
+    <CalculatorDisplay :value="displayValue" />
+    <CalculatorMenu @button-click="onButtonClick" />
+    <div v-if="errorMessage" class="error-message mt-2 text-red-500">{{ errorMessage }}</div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent, ref, computed } from 'vue';
 import { Calculator as CalculatorModel, Operation } from '../models/calculator';
-import CalculatorDisplay from './CalculatorDisplay.vue';
-import CalculatorMenu from './CalculatorMenu.vue';
 
 export default defineComponent({
   name: 'Calculator',
-  components: {
-    CalculatorDisplay,
-    CalculatorMenu
-  },
-  data() {
-    return {
-      calculator: new CalculatorModel(),
-      errorMessage: ''
+  setup() {
+    const calculator = new CalculatorModel();
+    const displayValue = ref<string>(calculator.getCurrent());
+    const errorMessage = ref<string>('');
+    const currentOperator = ref<Operation | null>(null);    
+    
+    // // Computed property to display current value with operator if present
+    // const displayValueWithOperator = computed(() => {
+    //   return currentOperator.value ? `${displayValue.value} ${currentOperator.value}` : displayValue.value;
+    // });
+
+    // Function to handle button clicks
+    const onButtonClick = (button: string) => {
+      errorMessage.value = '';  // Clear any existing error message
+      if (!isNaN(parseInt(button))) {
+          calculator.inputDigit(button);
+        } else if (button === 'C') {
+          calculator.clear();
+          currentOperator.value = null;
+        } else if (button === '=') {
+          calculator.calculate();
+          currentOperator.value = null;
+        } else if (['+', '-', '*', '/'].includes(button)) {
+          const operation = button as Operation;
+          calculator.inputOperator(operation);
+          currentOperator.value = operation;
+        } 
+        else {
+        displayValue.value = calculator.getCurrent();
+      } 
+        
     };
-  },
-  methods: {
-    handleButtonClick(button: string) {
-      this.errorMessage = '';  // Clear any existing error message
-      try {
-        if(/[0-9]/.test(button)){
-          this.calculator.inputDigit(button);
-        }else if (button === 'C'){
-          this.calculator.clear();
-        }else {
-          this.calculator.inputOperator(button as Operation);
-        }
-      } catch (error: any){
-        if (error instanceof Error){
-          this.errorMessage = error.message;
-        }else {
-          this.errorMessage = 'Um erro desconhecido ocorreu.'
-        }
-      }
-    }
+
+    return {
+      displayValue,
+      errorMessage,
+      onButtonClick
+    };
   }
 });
 </script>
 
-<style scoped>
-.calculator {
-  width: 320px;
-}
-.error-message {
-  color: red;
-}
-</style>
