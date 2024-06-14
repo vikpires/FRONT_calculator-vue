@@ -1,9 +1,12 @@
 <template>
-  <div class="display mb-6 mx-2 p-4 bg-gray-500 text-right  text-gray-100 text-2xl object-center font-mono rounded-lg">{{ value }}</div>
+  <div class="display my-6 mx-1 p-4 bg-gray-300 text-right  text-gray-800 text-4xl rounded-xl h-20 whitespace-nowrap overflow-hidden content-center">
+    {{ value }}
+    <span class="cursor-blink"></span>
+    </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent} from 'vue';
 
 export default defineComponent({
   name: 'CalculatorDisplay',
@@ -15,10 +18,3 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped>
-.display {
-  height: 60px;
-
-}
-</style>

@@ -1,8 +1,7 @@
 <template>
   <button 
-    @click="$emit('click', label)"
-    class="btn p-6 m-1 rounded-lg bg-gray-700 text-white font-bold hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-200" 
-    :class="{'col-span-2': label === '0'}">
+    class="btn p-4 m-1 rounded-xl bg-gray-700 text-gray-100 text-3xl hover:bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-600 h-18 w-16 content-center" 
+    @click="$emit('click', label)">
     {{ label }}
   </button>
 </template>
@@ -11,7 +10,7 @@
 import { defineComponent } from 'vue';
 
 export default defineComponent({
-  name: 'CalculatorButton',
+  name: 'calculator-button',
   props: {
     label: {
       type: String,
@@ -21,9 +20,3 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
-.btn {
-  height: 60px;
-  width: 60px;
-}
-</style>
