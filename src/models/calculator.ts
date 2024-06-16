@@ -11,8 +11,8 @@ export class Calculator {
     private current: string = '0'; //Stores the current value being typed or the result of the last operation.
     private operator: Operation | null = null; //Stores the current operator being used.
     private operand: number | null = null; //Stores the first operand before the operation
-    private limit: number = 10; // Limit the number of digits 
-    private maxResultLength: number = 10;
+    private limit: number = 9; // Limit the number of digits 
+    private maxResultLength: number = 8;
     
     public getCurrent(): string {
         return this.current; //Return the current value

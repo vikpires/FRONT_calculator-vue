@@ -1,5 +1,5 @@
 <template>
-  <div class="menu grid grid-cols-4 gap-2 mx-auto">
+  <div class="menu grid grid-cols-4 mx-auto">
     <CalculatorButton 
       v-for="button in buttons" 
       :key="button" 
@@ -34,12 +34,11 @@ export default defineComponent({
       }
     },
     buttonClass(button: string) {
+      const mathOperators = ['+', '-', 'x', '/'];
       return {
-        'bg-yellow-500 text-gray-900 hover:bg-yellow-800': button === '=',
-        'bg-blue-500 text-white hover:bg-blue-800': ['+', '-', 'x', '/'].includes(button),
-        'bg-gray-700 text-white hover:bg-gray-800': !['=', '+', '-', 'x', '/'].includes(button),
-        'text-white': !['=', '+', '-', 'x', '/'].includes(button),
-        'rounded-md p-2 text-2xl': true,
+        'bg-yellow-500 text-gray-800 hover:bg-yellow-700 active:bg-yellow-700': button === '=',
+        'bg-blue-500 text-white hover:bg-blue-800 active:bg-blue-800': mathOperators.includes(button),
+        'bg-gray-700 text-white hover:bg-gray-800 active:bg-gray-800': !mathOperators.includes(button),
       };
     },
   }
@@ -48,9 +47,10 @@ export default defineComponent({
 
 <style scoped>
 .menu {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
   gap: 2px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap; 
 }
 
 .menu .button {

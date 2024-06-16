@@ -1,5 +1,5 @@
 <template>
-  <div class="calculator my-6 rounded-xl p-6 bg-gray-900 w-max">
+  <div class="calculator my-6 rounded-xl p-6 bg-gray-900 w-auto h-auto">
     <!-- Usar a propriedade computada para exibir o valor com o operador -->
     <CalculatorDisplay :value="displayValueWithOperator" />
     <CalculatorMenu @button-click="onButtonClick" />
@@ -73,13 +73,4 @@ export default defineComponent({
   }
 });
 </script>
-
-<style scoped>
-.operator-display {
-  text-align: right;
-  font-size: 2rem;
-  color: #888;
-  margin-right: 1rem;
-}
-</style>
 
