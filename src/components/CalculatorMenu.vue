@@ -59,4 +59,18 @@ export default defineComponent({
   justify-content: center;
   align-items: center;
 }
+
+/* estilos específicos para as classes personalizadas */
+.bg-blue-500 {
+  background-color: #377ceb; 
+}
+
+.bg-blue-800 {
+  background-color: #1e40af; /* para hover */
+}
+
+/* estilo de hover para classes personalizadas */
+.bg-blue-500:hover {
+  background-color: #1e40af; /* altera a cor de fundo para azul escuro ao passar o mouse */
+}
 </style>
