@@ -46,6 +46,7 @@ export default defineComponent({
         previousValue.value = '';
 
       } else if (['+', '-', 'x', '/'].includes(button)) {
+
         if(button === '-' && displayValue.value === '0'){
           displayValue.value = '';
         }
