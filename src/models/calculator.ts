@@ -2,7 +2,7 @@
 export enum Operation {
     Add = "+",
     Subtract = "-",
-    Multiply = "*",
+    Multiply = "x",
     Divide = "/"
 }
 
@@ -78,3 +78,4 @@ export class Calculator {
         this.operand = null;
     }
 }
+

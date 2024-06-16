@@ -45,7 +45,8 @@ export default defineComponent({
         currentOperator.value = null;
         previousValue.value = '';
 
-      } else if (['+', '-', '*', '/'].includes(button)) {
+      } else if (['+', '-', 'x', '/'].includes(button)) {
+
         if(button === '-' && displayValue.value === '0'){
           displayValue.value = '';
         }
@@ -81,3 +82,4 @@ export default defineComponent({
   margin-right: 1rem;
 }
 </style>
+

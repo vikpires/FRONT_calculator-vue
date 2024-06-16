@@ -4,6 +4,7 @@
       v-for="button in buttons" 
       :key="button" 
       :label="button" 
+      :class="buttonClass(button)"  
       @click="onButtonClick" />
   </div>
 </template>
@@ -18,7 +19,7 @@ export default defineComponent({
     return {
       buttons: [
         '1', '2', '3', '/',
-        '4', '5', '6', '*',
+        '4', '5', '6', 'x',
         '7', '8', '9', '-', 
         'C', '0', '=', '+',
       ]
@@ -26,19 +27,36 @@ export default defineComponent({
   },
   methods: {
     onButtonClick(button: string) {
-      if(button === 'C' || button === '='){
+      if (button === 'C' || button === '=') {
         this.$emit('button-click', button);
-      }else{
-      this.$emit('button-click', button as Operation);
-    }
+      } else {
+        this.$emit('button-click', button as Operation);
+      }
+    },
+    buttonClass(button: string) {
+      return {
+        'bg-yellow-500 text-gray-900 hover:bg-yellow-800': button === '=',
+        'bg-blue-500 text-white hover:bg-blue-800': ['+', '-', 'x', '/'].includes(button),
+        'bg-gray-700 text-white hover:bg-gray-800': !['=', '+', '-', 'x', '/'].includes(button),
+        'text-white': !['=', '+', '-', 'x', '/'].includes(button),
+        'rounded-md p-2 text-2xl': true,
+      };
+    },
   }
-}
 });
 </script>
+
 <style scoped>
 .menu {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 2px;
+}
+
+.menu .button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
