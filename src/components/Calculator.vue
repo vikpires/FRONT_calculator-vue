@@ -1,5 +1,5 @@
 <template>
-  <div class="calculator my-6 rounded-xl p-6 bg-gray-900">
+  <div class="calculator my-6 rounded-xl p-6 bg-gray-900 w-auto h-auto">
     <!-- Usar a propriedade computada para exibir o valor com o operador -->
     <CalculatorDisplay :value="displayValueWithOperator" :class="displayError" />
     <CalculatorMenu @button-click="onButtonClick" />

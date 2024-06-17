@@ -9,7 +9,6 @@ export class Calculator {
     private maxResultLength: number = 8;
     private errorMessage: string = '';
 
-    // Return the current value
     public getCurrent(): string {
         return this.current; 
     }
