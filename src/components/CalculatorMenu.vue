@@ -1,5 +1,5 @@
 <template>
-  <div class="menu grid grid-cols-4 mx-auto">
+  <div class="menu grid grid-cols-4 mx-auto w-max">
     <CalculatorButton 
       v-for="button in buttons" 
       :key="button" 
@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Operation } from '../models/calculator';
+import { Operations } from '../models/calculator';
 
 export default defineComponent({
   name: 'CalculatorMenu',
@@ -30,13 +30,13 @@ export default defineComponent({
       if (button === 'C' || button === '=') {
         this.$emit('button-click', button);
       } else {
-        this.$emit('button-click', button as Operation);
+        this.$emit('button-click', button as Operations);
       }
     },
     buttonClass(button: string) {
       const mathOperators = ['+', '-', 'x', '/'];
       return {
-        'bg-yellow-500 text-gray-800 hover:bg-yellow-700 active:bg-yellow-700': button === '=',
+        'bg-yellow-500 text-gray-700 hover:bg-yellow-700 active:bg-yellow-700': button === '=',
         'bg-blue-500 text-white hover:bg-blue-800 active:bg-blue-800': mathOperators.includes(button),
         'bg-gray-700 text-white hover:bg-gray-800 active:bg-gray-800': !mathOperators.includes(button),
       };
