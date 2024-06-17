@@ -1,8 +1,8 @@
 <template>
-  <div class="display my-8 mx-1 p-2 bg-gray-300 text-right text-gray-900 text-4xl rounded-xl h-28 object-center relative">
-    <span class="value p-2 text-ellipsis whitespace-break-spaces mr-1">{{ value }}</span>
-    <span v-if="shouldShowCursor" class="cursor-blink absolute right-4 m-auto"></span>
-    </div>
+  <div class="display my-8 mx-1 p-2 bg-gray-300 text-right text-gray-800 text-4xl rounded-xl h-28 object-center relative">
+    <span class="value p-[3px] text-ellipsis whitespace-break-spaces">{{ value }}</span>
+    <span v-if="shouldShowCursor" class="cursor-blink absolute right-2 m-auto bg-gray-700"></span>
+  </div>
 </template>
 
 <script lang="ts">
@@ -19,7 +19,7 @@ export default defineComponent({
   setup(props) {
     const shouldShowCursor = computed(() => {
     // Mostra o cursor piscante se o valor for diferente de '0' 
-    return props.value !== '0';
+    return props.value !== '0' && props.value !== 'NaN';
     });
     return {
       shouldShowCursor
@@ -42,8 +42,7 @@ export default defineComponent({
 .cursor-blink {
   display: inline-block;
   width: 2px; /* Largura do cursor */
-  height: 64px; /* Altura do cursor */
-  background-color: rgb(31 41 55); /* Cor do cursor */
+  height: 52px; /* Altura do cursor */
   animation: blink 1s infinite; /* Animação de piscar */
 }
 
