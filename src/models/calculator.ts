@@ -5,7 +5,7 @@ export class Calculator {
     private current: string = '0'; 
     private operator: Operations | null = null; 
     private operand: number | null = null; 
-    private limit: number = 11; 
+    private limit: number = 10; 
     private maxResultLength: number = 8;
     private errorMessage: string = '';
 
