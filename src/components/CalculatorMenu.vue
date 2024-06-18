@@ -24,6 +24,13 @@ export default defineComponent({
       ]
     };
   },
+  computed: {
+    colorOperations(){
+      const colorBlue =  'bg-[#377ceb] text-white hover:bg-[#1c40b4] active:bg-[#1c40b4]';
+    return colorBlue;
+    }
+
+  },
   methods: {
     onButtonClick(button: string) {
       this.$emit('button-click', button);
@@ -33,7 +40,7 @@ export default defineComponent({
       const equal = ['='];
       return {
         'bg-yellow-500 text-gray-700 hover:bg-yellow-700 active:bg-yellow-700': equal.includes(button),
-        'bg-[#377ceb] text-white hover:bg-blue-800 active:bg-blue-800': mathOperators.includes(button),
+        [this.colorOperations]: mathOperators.includes(button),
         'bg-gray-700 text-white hover:bg-gray-800 active:bg-gray-800': !mathOperators.includes(button) && !equal.includes(button)
       };
     },
@@ -57,17 +64,4 @@ export default defineComponent({
   align-items: center;
 }
 
-/* estilos específicos para as classes personalizadas */
-/* .bg-blue-500 {
-  background-color: #377ceb; 
-} */
-
-.bg-blue-800 {
-  background-color: #1e40af; /* para hover */
-}
-
-/* estilo de hover para classes personalizadas */
-.bg-blue-500:hover {
-  background-color: #1e40af; /* altera a cor de fundo para azul escuro ao passar o mouse */
-}
 </style>

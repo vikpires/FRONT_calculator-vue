@@ -25,7 +25,7 @@ export class Calculator {
     
     //Add a digit to the current value
     public inputDigit(digit: string): void {
-        if (this.current === 'NaN' || this.errorMessage) {
+        if (this.current === 'Operação inválida' || this.errorMessage) {
             this.clear();
         }
         if (this.current.length >= this.limit) {
