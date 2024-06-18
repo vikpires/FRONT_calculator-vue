@@ -1,6 +1,6 @@
 <template>
   <div class="display my-8 mx-1 p-2 bg-gray-300 text-right text-gray-800 text-4xl rounded-xl h-28 object-center relative">
-    <span class="value p-[3px] text-ellipsis whitespace-break-spaces">{{ value }}</span>
+    <span class="value p-[5px] text-ellipsis whitespace-break-spaces">{{ value }}</span>
     <span v-if="shouldShowCursor" class="cursor-blink absolute right-2 m-auto bg-gray-700"></span>
   </div>
 </template>
