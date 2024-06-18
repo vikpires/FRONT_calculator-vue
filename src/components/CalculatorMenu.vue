@@ -11,7 +11,6 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Operations } from '../models/operations';
 
 export default defineComponent({
   name: 'CalculatorMenu',
@@ -27,18 +26,14 @@ export default defineComponent({
   },
   methods: {
     onButtonClick(button: string) {
-      if (button === 'C' || button === '=') {
-        this.$emit('button-click', button);
-      } else {
-        this.$emit('button-click', button as Operations);
-      }
+      this.$emit('button-click', button);
     },
     buttonClass(button: string) {
       const mathOperators = ['+', '-', 'x', '/'];
       const equal = ['='];
       return {
         'bg-yellow-500 text-gray-700 hover:bg-yellow-700 active:bg-yellow-700': equal.includes(button),
-        'bg-blue-500 text-white hover:bg-blue-800 active:bg-blue-800': mathOperators.includes(button),
+        'bg-[#377ceb] text-white hover:bg-blue-800 active:bg-blue-800': mathOperators.includes(button),
         'bg-gray-700 text-white hover:bg-gray-800 active:bg-gray-800': !mathOperators.includes(button) && !equal.includes(button)
       };
     },
@@ -46,7 +41,8 @@ export default defineComponent({
 });
 </script>
 
-<style scoped>
+<!-- Excluir após incluir no tailwind -->
+<style scoped> 
 .menu {
   gap: 2px;
   text-overflow: ellipsis;
@@ -62,9 +58,9 @@ export default defineComponent({
 }
 
 /* estilos específicos para as classes personalizadas */
-.bg-blue-500 {
+/* .bg-blue-500 {
   background-color: #377ceb; 
-}
+} */
 
 .bg-blue-800 {
   background-color: #1e40af; /* para hover */

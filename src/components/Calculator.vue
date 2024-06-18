@@ -30,7 +30,7 @@ export default defineComponent({
         : this.displayValue;
     },
     displayError(): string {
-      return this.displayValue === 'NaN' ? 'text-red-500' : '';
+      return this.displayValue === 'Operação inválida' ? 'text-red-500 text-[30px]' : '';
     }
   },
   watch: {
@@ -65,7 +65,7 @@ export default defineComponent({
         if (button === '-' && this.displayValue === '0') {
           this.displayValue = '';
         }
-        if (this.displayValue !== 'NaN') {
+        if (this.displayValue !== 'Operação inválida') {
           if (this.currentOperator) {
             this.calculator.calculate();
             this.displayValue = this.calculator.getCurrent();
