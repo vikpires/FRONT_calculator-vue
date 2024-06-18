@@ -93,7 +93,7 @@ export class Calculator {
 // Set an error message and display NaN
     private setError(message: string): void {
         this.errorMessage = message;
-        this.current = 'NaN';
+        this.current = 'Operação inválida';
     }
 
 // Update the current display value from the operand

@@ -19,7 +19,7 @@ export default defineComponent({
   setup(props) {
     const shouldShowCursor = computed(() => {
     // Mostra o cursor piscante se o valor for diferente de '0' 
-    return props.value !== '0' && props.value !== 'NaN';
+    return props.value !== '0' && props.value === 'Operação Inválida';
     });
     return {
       shouldShowCursor
@@ -27,6 +27,8 @@ export default defineComponent({
   }
 });
 </script>
+
+<!-- Excluir após incluir no tailwind -->
 <style scoped>
 .display {
   max-width:285px;
