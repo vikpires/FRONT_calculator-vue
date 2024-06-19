@@ -1,5 +1,5 @@
 <template>
-  <div class="menu grid grid-cols-4 mx-auto w-max">
+  <div class="menu grid grid-cols-4 mx-auto w-max overflow-hidden text-ellipsis whitespace-nowrap">
     <CalculatorButton 
       v-for="button in buttons" 
       :key="button" 
@@ -11,6 +11,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { Colors } from './MenuService';
 
 export default defineComponent({
   name: 'CalculatorMenu',
@@ -31,43 +32,16 @@ export default defineComponent({
     buttonClass(button: string) {
       const mathOperators = ['+', '-', 'x', '/'];
       const equal = ['='];
-      return {
-        'bg-yellow-500 text-gray-700 hover:bg-yellow-700 active:bg-yellow-700': equal.includes(button),
-        'bg-[#377ceb] text-white hover:bg-blue-800 active:bg-blue-800': mathOperators.includes(button),
-        'bg-gray-700 text-white hover:bg-gray-800 active:bg-gray-800': !mathOperators.includes(button) && !equal.includes(button)
-      };
+      if (equal.includes(button)) {
+        return Colors.colorEqual();
+      } else if (mathOperators.includes(button)) {
+        return Colors.colorOperations();
+      } else {
+        return Colors.colorDefault();
+      }
     },
   }
 });
 </script>
 
-<!-- Excluir após incluir no tailwind -->
-<style scoped> 
-.menu {
-  gap: 2px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap; 
-}
 
-.menu .button {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-/* estilos específicos para as classes personalizadas */
-/* .bg-blue-500 {
-  background-color: #377ceb; 
-} */
-
-.bg-blue-800 {
-  background-color: #1e40af; /* para hover */
-}
-
-/* estilo de hover para classes personalizadas */
-.bg-blue-500:hover {
-  background-color: #1e40af; /* altera a cor de fundo para azul escuro ao passar o mouse */
-}
-</style>

@@ -19,7 +19,7 @@ export default defineComponent({
   setup(props) {
     const shouldShowCursor = computed(() => {
     // Mostra o cursor piscante se o valor for diferente de '0' 
-    return props.value !== '0' && props.value === 'Operação Inválida';
+    return props.value !== '0' && props.value !== 'Operação inválida';
     });
     return {
       shouldShowCursor
