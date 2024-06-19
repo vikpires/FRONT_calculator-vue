@@ -1,5 +1,5 @@
 <template>
-  <div class="menu grid grid-cols-4 mx-auto w-max gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
+  <div class="menu grid grid-cols-4 mx-auto w-max overflow-hidden text-ellipsis whitespace-nowrap">
     <CalculatorButton 
       v-for="button in buttons" 
       :key="button" 
