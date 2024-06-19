@@ -1,5 +1,5 @@
 <template>
-  <div class="menu grid grid-cols-4 mx-auto w-max">
+  <div class="menu grid grid-cols-4 mx-auto w-max gap-2 overflow-hidden text-ellipsis whitespace-nowrap">
     <CalculatorButton 
       v-for="button in buttons" 
       :key="button" 
@@ -11,6 +11,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
+import { Colors } from './MenuService';
 
 export default defineComponent({
   name: 'CalculatorMenu',
@@ -24,13 +25,6 @@ export default defineComponent({
       ]
     };
   },
-  computed: {
-    colorOperations(){
-      const colorBlue =  'bg-[#377ceb] text-white hover:bg-[#1c40b4] active:bg-[#1c40b4]';
-    return colorBlue;
-    }
-
-  },
   methods: {
     onButtonClick(button: string) {
       this.$emit('button-click', button);
@@ -38,30 +32,16 @@ export default defineComponent({
     buttonClass(button: string) {
       const mathOperators = ['+', '-', 'x', '/'];
       const equal = ['='];
-      return {
-        'bg-yellow-500 text-gray-700 hover:bg-yellow-700 active:bg-yellow-700': equal.includes(button),
-        [this.colorOperations]: mathOperators.includes(button),
-        'bg-gray-700 text-white hover:bg-gray-800 active:bg-gray-800': !mathOperators.includes(button) && !equal.includes(button)
-      };
+      if (equal.includes(button)) {
+        return Colors.colorEqual();
+      } else if (mathOperators.includes(button)) {
+        return Colors.colorOperations();
+      } else {
+        return Colors.colorDefault();
+      }
     },
   }
 });
 </script>
 
-<!-- Excluir após incluir no tailwind -->
-<style scoped> 
-.menu {
-  gap: 2px;
-  text-overflow: ellipsis;
-  overflow: hidden;
-  white-space: nowrap; 
-}
 
-.menu .button {
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-</style>
