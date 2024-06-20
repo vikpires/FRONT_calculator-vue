@@ -1,5 +1,5 @@
 <template>
-  <div class="calculator my-6 rounded-xl p-6 bg-gray-900 w-auto h-auto">
+  <div class="calculator my-6 rounded-xl p-6 bg-gray-900 w-[340px] h-auto">
     <!-- Usar a propriedade computada para exibir o valor com o operador -->
     <CalculatorDisplay :value="displayValueWithOperator" :class="displayError" />
     <CalculatorMenu @button-click="onButtonClick" />
@@ -8,17 +8,18 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Calculator as CalculatorModel } from '../models/calculator';
-import { Operations} from '../models/operations';
+import { Operations} from '../models/Operations';
+import { CalculatorController } from '../controllers/CalculatorController';
+
 
 export default defineComponent({
   name: 'Calculator',
   data() {
-    const calculator = new CalculatorModel();
+    const calculatorController = new CalculatorController();
     return {
-      calculator,
-      displayValue: calculator.getCurrent(),
-      errorMessage: calculator.getErrorMessage(),
+      calculatorController,
+      displayValue: calculatorController.getCurrent(),
+      errorMessage: calculatorController.getErrorMessage(),
       currentOperator: null as Operations | null,
       previousValue: '',
     };
@@ -41,23 +42,22 @@ export default defineComponent({
   methods: {
     onButtonClick(button: string) {
       if (this.errorMessage) {
-        this.calculator.clearErrorMessage();
+        this.calculatorController.clear();
         this.errorMessage = '';
       }
-
       if (!isNaN(parseInt(button))) {
-        this.calculator.inputDigit(button);
-        this.displayValue = this.calculator.getCurrent();
+        this.calculatorController.inputDigit(button);
+        this.displayValue = this.calculatorController.getCurrent();
       } else if (button === 'C') {
-        this.calculator.clear();
+        this.calculatorController.clear();
         this.currentOperator = null;
         this.previousValue = '';
-        this.displayValue = this.calculator.getCurrent();
-        this.errorMessage = this.calculator.getErrorMessage();
+        this.displayValue = this.calculatorController.getCurrent();
+        this.errorMessage = this.calculatorController.getErrorMessage();
       } else if (button === '=') {
-        this.calculator.calculate();
-        this.displayValue = this.calculator.getCurrent();
-        this.errorMessage = this.calculator.getErrorMessage();
+        this.calculatorController.calculate();
+        this.displayValue = this.calculatorController.getCurrent();
+        this.errorMessage = this.calculatorController.getErrorMessage();
         this.currentOperator = null;
         this.previousValue = '';
       } else if (['+', '-', 'x', '/'].includes(button)) {
@@ -67,17 +67,17 @@ export default defineComponent({
         }
         if (this.displayValue !== 'Operação inválida') {
           if (this.currentOperator) {
-            this.calculator.calculate();
-            this.displayValue = this.calculator.getCurrent();
+            this.calculatorController.calculate();
+            this.displayValue = this.calculatorController.getCurrent();
           }
           this.currentOperator = operation;
           this.previousValue = this.displayValue;
-          this.calculator.inputOperator(operation);
+          this.calculatorController.inputOperator(operation);
           this.displayValue = '';
-        }
       }
-      this.errorMessage = this.calculator.getErrorMessage();
+      this.errorMessage = this.calculatorController.getErrorMessage();
     }
+  }
   }
 });
 </script>
