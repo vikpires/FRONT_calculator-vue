@@ -28,7 +28,6 @@ export default defineComponent({
 });
 </script>
 
-Excluir após incluir no tailwind
 <style scoped>
 .custom-blink {
   animation: custom-blink 1s infinite; /* Animação de piscar */
