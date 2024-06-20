@@ -11,7 +11,7 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Colors } from './MenuService';
+import { ButtonColors } from './CalculatorMenuService';
 
 export default defineComponent({
   name: 'CalculatorMenu',
@@ -33,11 +33,11 @@ export default defineComponent({
       const mathOperators = ['+', '-', 'x', '/'];
       const equal = ['='];
       if (equal.includes(button)) {
-        return Colors.colorEqual();
+        return ButtonColors.equalColor();
       } else if (mathOperators.includes(button)) {
-        return Colors.colorOperations();
+        return ButtonColors.operationsColor();
       } else {
-        return Colors.colorDefault();
+        return ButtonColors.defaultColor();
       }
     },
   }

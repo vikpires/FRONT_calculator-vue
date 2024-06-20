@@ -2,7 +2,7 @@ import { App } from 'vue';
 import CalculatorButton from '../components/CalculatorButton.vue';
 import CalculatorDisplay from '../components/CalculatorDisplay.vue';
 import CalculatorMenu from '../components/CalculatorMenu.vue';
-import Calculator from '../components/Calculator.vue';
+import Calculator from '../view/Calculator.vue';
 
 
 export function setComponent(app:App) {
