@@ -4,7 +4,7 @@ import { CalculatorContext } from "./CalculatorModel";
 export class InputHandler {
     private context: CalculatorContext;
 
-    constructor(context: CalculatorContext){
+    constructor(context: CalculatorContext) {
         this.context = context;
     }
 
@@ -17,23 +17,22 @@ export class InputHandler {
 
         if (this.context.current === '0' && digit !== '.') {
             this.context.current = digit;
-          } else {
+        } else {
             this.context.current += digit;
-          }
+        }
     }
 
-    // Add an operator to the calculator and calculate if there's a pending operation
-    public inputOperator(operator: Operations): void { 
+    public inputOperator(operator: Operations): void {
         if (isNaN(Number(this.context.current))) return;
-        
+
         if (this.context.operand === null) {
             this.context.operand = parseFloat(this.context.current);
         } else if (this.context.operator) {
             this.context.calculate();
             this.context.operand = parseFloat(this.context.current);
         }
-        
+
         this.context.operator = operator;
         this.context.current = '0'; // Definido para '0' após definição de operador
-    }  
+    }
 }

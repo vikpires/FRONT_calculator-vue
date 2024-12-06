@@ -4,12 +4,11 @@ import { CalculatorContext } from "./CalculatorModel";
 export class OperationHandler {
     private context: CalculatorContext;
 
-    constructor(context: CalculatorContext){
+    constructor(context: CalculatorContext) {
         this.context = context;
     }
-    //Makes the calculation based on the stored operator and operands
     public calculate(): void {
-        if (this.context.operator && this.context.operand !== null){
+        if (this.context.operator && this.context.operand !== null) {
             const currentNumber = parseFloat(this.context.current);
             switch (this.context.operator) {
                 case Operations.Add:
@@ -23,11 +22,11 @@ export class OperationHandler {
                     break;
                 case Operations.Divide:
                     if (currentNumber === 0) {
-                        this.context.setError("Não é possível dividir por zero.")
+                        this.context.setError("Não é possível dividir por zero.");
                         return;
                     }
                     this.context.operand /= currentNumber;
-                    break; 
+                    break;
             }
             this.context.updateCurrentFromOperand();
             this.context.resetOperatorAndOperand();

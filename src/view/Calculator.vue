@@ -1,14 +1,13 @@
 <template>
-  <div class="calculator my-6 rounded-xl p-6 bg-gray-900 w-[340px] h-auto">
-    <!-- Usar a propriedade computada para exibir o valor com o operador -->
+  <section class="calculator my-6 rounded-xl p-6 bg-gray-900 w-[340px] h-auto">
     <CalculatorDisplay :value="displayValueWithOperator" :class="displayError" />
     <CalculatorMenu @button-click="onButtonClick" />
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue';
-import { Operations} from '../models/Operations';
+import { Operations } from '../models/Operations';
 import { CalculatorController } from '../controllers/CalculatorController';
 
 
@@ -35,12 +34,12 @@ export default defineComponent({
     }
   },
   watch: {
-    errorMessage(newErrorMessage: string) {
-      this.errorMessage = newErrorMessage;
+    errorMessage(newErrorMessage: string): string {
+      return this.errorMessage = newErrorMessage;
     }
   },
   methods: {
-    onButtonClick(button: string) {
+    onButtonClick(button: string): void {
       if (this.errorMessage) {
         this.calculatorController.clear();
         this.errorMessage = '';
@@ -74,11 +73,10 @@ export default defineComponent({
           this.previousValue = this.displayValue;
           this.calculatorController.inputOperator(operation);
           this.displayValue = '';
+        }
+        this.errorMessage = this.calculatorController.getErrorMessage();
       }
-      this.errorMessage = this.calculatorController.getErrorMessage();
     }
-  }
   }
 });
 </script>
-
