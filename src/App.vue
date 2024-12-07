@@ -1,7 +1,8 @@
 <template>
-  <div class="app-container min-h-screen flex items-center justify-center bg-gray-200">
+  <main class="app-container min-h-screen flex flex-col items-center justify-center bg-gray-200">
     <Calculator />
-  </div>
+    <Footer />
+  </main>
 </template>
 
 <script lang="ts">
