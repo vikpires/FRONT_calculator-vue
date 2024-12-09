@@ -1,12 +1,8 @@
 <template>
-  <div class="menu grid grid-cols-4 mx-auto w-max overflow-hidden text-ellipsis whitespace-nowrap">
-    <CalculatorButton 
-      v-for="button in buttons" 
-      :key="button" 
-      :label="button" 
-      :class="buttonClass(button)"  
+  <section class="menu grid grid-cols-4 mx-auto w-max overflow-hidden text-ellipsis whitespace-nowrap">
+    <CalculatorButton v-for="button in buttons" :key="button" :label="button" :class="buttonClass(button)"
       @click="onButtonClick" />
-  </div>
+  </section>
 </template>
 
 <script lang="ts">
@@ -20,7 +16,7 @@ export default defineComponent({
       buttons: [
         '1', '2', '3', '/',
         '4', '5', '6', 'x',
-        '7', '8', '9', '-', 
+        '7', '8', '9', '-',
         'C', '0', '=', '+',
       ]
     };
@@ -43,5 +39,3 @@ export default defineComponent({
   }
 });
 </script>
-
-

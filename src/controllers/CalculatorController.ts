@@ -4,10 +4,10 @@ import { Operations } from "../models/Operations";
 export class CalculatorController {
     private calculator: Calculator;
 
-    constructor(){
+    constructor() {
         this.calculator = new Calculator();
     }
-    public getCurrent(): string{
+    public getCurrent(): string {
         return this.calculator.getCurrent();
     }
     public getErrorMessage(): string {
