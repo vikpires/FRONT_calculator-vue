@@ -1,9 +1,16 @@
 # Calculator Vue
 
 <div align="center">
-    <img src="./public/calculator-screenshot.png" alt="Calculator's visual interface" title="Image of the calculator's visual interface." width="400px"> 
+    <img 
+        src="./public/calculator-screenshot.png" 
+        alt="Visual interface of the calculator" 
+        title="Screenshot of the calculator's visual interface" 
+        width="400px"
+    /> 
 </div>
-<div align="center">Calculator's visual interface</div>
+<div align="center">
+    Calculator Visual Interface
+</div>
 
 ## Description
 >A responsive and interactive calculator built using Vue.js, TypeScript, and TailwindCSS. This project was developed as part of the TIC 12 Technological Residency Program (RESTIC 12).
@@ -35,13 +42,15 @@
 ![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
+
 
 ## Project Structure 
 
 ```
 📁 src/                 # Directory containing all project files
 │
-├───📁 assets/          # Contains static files like images, fonts, and icons.
+├───📁 assets/          # Contains static files such as images, fonts, and icons.
 │
 ├───📁 components/      # Stores reusable UI components for the calculator.
 │
@@ -63,11 +72,21 @@
 ## Demo 
 
 <div align="center">
-    <img src="./public/calculator_demo.gif" alt="Calculator gif" title="Calculator functionalities demonstrated in GIF format" width="350px"> 
+    <img 
+    src="./public/calculator_demo.gif" 
+    alt="Calculator functionalities demonstration in GIF format" 
+    title="Demonstration of calculator functionalities in GIF format" 
+    width="350px"
+    /> 
 </div>
-<div align="center">Calculator functionality demonstration</div>
+<div align="center">
+    Demonstration of Calculator Functionalities
+</div>
+<br />
 
-## Developers <br />
+You can test the calculator live [here](https://calculator-vue-s97g.onrender.com/).
+
+## Developers 
 
 [Beatriz Monteiro](https://github.com/thebiatriz)<br />
 [Vitor Pires](https://github.com/vikpires)
